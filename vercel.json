@@ -1,17 +1,11 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
-    }
-  ],
-  "routes": [
-    { "src": "/api/ai", "dest": "/api/ai.ts" },
-    { "src": "/api/candidates", "dest": "/api/candidates.ts" },
-    { "src": "/api/reports", "dest": "/api/reports.ts" },
-    { "src": "/api/settings", "dest": "/api/settings.ts" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "buildCommand": "npm run build --legacy-peer-deps",
+  "outputDirectory": "build",
+  "rewrites": [
+    { "source": "/api/ai", "destination": "/api/ai.ts" },
+    { "source": "/api/candidates", "destination": "/api/candidates.ts" },
+    { "source": "/api/reports", "destination": "/api/reports.ts" },
+    { "source": "/api/settings", "destination": "/api/settings.ts" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
