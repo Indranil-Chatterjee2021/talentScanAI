@@ -1,0 +1,79 @@
+{
+  "name": "talentscan-resume-shortlister",
+  "version": "1.1.0",
+  "description": "AI-powered resume parsing and candidate shortlisting app with hybrid extraction and deterministic scoring",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"env-cmd -f .env tsx backend/server.ts\" \"react-scripts start\"",
+    "server": "env-cmd -f .env tsx backend/server.ts",
+    "client": "react-scripts start",
+    "build": "rm -rf build node_modules && npm install --legacy-peer-deps --silent && react-scripts build",
+    "vercel-build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "test:coverage": "react-scripts test --coverage --watchAll=false"
+  },
+  "proxy": "http://localhost:3001",
+  "keywords": [
+    "talent-scan",
+    "candidate-shortlisting",
+    "recruiting",
+    "ai",
+    "anthropic",
+    "gemini",
+    "react",
+    "typescript"
+  ],
+  "author": "Indranil Chatterjee",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^10.0.3",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
+    "mammoth": "^1.10.0",
+    "mongodb": "^7.2.0",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^3.11.174",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/express": "^4.17.25",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.126",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/pdfjs-dist": "^2.10.377",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "@vercel/node": "^5.8.12",
+    "env-cmd": "^11.0.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts"
+    ]
+  }
+}

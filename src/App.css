@@ -1,0 +1,156 @@
+/* ── CSS custom properties ── */
+:root {
+  --bg-main: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-section: #f3f4f6;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --text-label: #64748b;
+  --border: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.10);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --input-bg: #ffffff;
+  /* header/footer gradient — purple in light mode */
+  --header-grad-start: #667eea;
+  --header-grad-end: #764ba2;
+  --header-border: rgba(255, 255, 255, 0.1);
+  --accent-line: linear-gradient(90deg, #0ea5e9, #8b5cf6, #06b6d4);
+}
+
+/* MongoDB Atlas dark theme */
+body.dark {
+  --bg-main: #001E2B;
+  --bg-card: #112733;
+  --bg-section: #0E1E25;
+  --text-primary: #E8EDEB;
+  --text-secondary: #89979B;
+  --text-tertiary: #5C6B70;
+  --text-label: #89979B;
+  --border: #1C3D45;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.50);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.40);
+  --shadow-hover: 0 4px 16px rgba(0, 237, 100, 0.12);
+  --input-bg: #001E2B;
+  /* header/footer gradient — MongoDB teal in dark mode */
+  --header-grad-start: #001E2B;
+  --header-grad-end: #023430;
+  --header-border: rgba(0, 237, 100, 0.35);
+  --accent-line: linear-gradient(90deg, #00ED64, #00684A, #00ED64);
+}
+
+/* ── Base ── */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.App {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Toast ── */
+.toast-success {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #4ade80, #22d3ee);
+  color: #065f46;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(34, 211, 238, 0.15);
+  z-index: 9999;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) scale(0.95); }
+  to   { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+/* ── Footer ── */
+.app-footer {
+  background: linear-gradient(135deg, var(--header-grad-start) 0%, var(--header-grad-end) 100%);
+  border-top: 1px solid var(--header-border);
+  color: white;
+  padding: 16px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.version {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.separator { color: rgba(255, 255, 255, 0.7); font-weight: 300; }
+.developer { font-size: 16px; }
+.footer-description { color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 400; letter-spacing: 0.5px; }
+
+@media (max-width: 768px) {
+  .footer-info { flex-direction: column; gap: 8px; }
+  .separator { display: none; }
+  .footer-content { padding: 0 16px; }
+}
+
+/* ── Scrollbar — light mode ── */
+.main-content::-webkit-scrollbar { width: 8px; }
+.main-content::-webkit-scrollbar-track { background: #f1f5f9; }
+.main-content::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+.main-content::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── Scrollbar — dark mode (MongoDB Atlas) ── */
+body.dark .main-content::-webkit-scrollbar-track { background: #001E2B; }
+body.dark .main-content::-webkit-scrollbar-thumb { background: #1C3D45; border-radius: 4px; }
+body.dark .main-content::-webkit-scrollbar-thumb:hover { background: #2d5a66; }
+
+/* Firefox */
+.main-content { scrollbar-color: #cbd5e1 #f1f5f9; scrollbar-width: thin; }
+body.dark .main-content { scrollbar-color: #1C3D45 #001E2B; }
